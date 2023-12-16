@@ -70,6 +70,23 @@ class BeanNamingTest {
     }
 
     @Test
+    @DisplayName("Bean의 name 필드는 배열로 여러개의 이름을 지정할 수 있다.")
+    void aliasBeanNaming() {
+        /* given */
+
+        /* when */
+        final Object cat = applicationContext.getBean("cat");
+        final Object kitty = applicationContext.getBean("kitty");
+        final Object neko = applicationContext.getBean("neko");
+
+        /* then */
+        assertAll(
+                () -> assertThat(cat).isEqualTo(kitty),
+                () -> assertThat(cat).isEqualTo(neko),
+                () -> assertThat(kitty).isEqualTo(neko));
+    }
+
+    @Test
     @DisplayName("동일한 클래스의 빈이 여러개 존재할 경우, 빈 이름으로 조회해야한다.")
     void findBeanByNameInDuplicatedClassBean() {
         /* given */

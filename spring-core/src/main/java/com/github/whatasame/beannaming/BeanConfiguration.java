@@ -25,7 +25,7 @@ public class BeanConfiguration {
         return new Dog();
     }
 
-    @Bean(name = "cat")
+    @Bean(name = {"cat", "kitty", "neko"})
     public Animal cat() {
         return new Cat();
     }
