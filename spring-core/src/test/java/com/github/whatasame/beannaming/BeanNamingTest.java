@@ -44,7 +44,7 @@ class BeanNamingTest {
     }
 
     @Test
-    @DisplayName("Bean의 이름을 지정하지 않으면 클래스 이름을 사용한다.")
+    @DisplayName("Bean의 이름을 지정하지 않으면 메서드 이름을 사용한다.")
     void defaultBeanNaming() {
         /* given */
 
