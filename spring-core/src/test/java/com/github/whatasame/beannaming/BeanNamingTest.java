@@ -1,9 +1,12 @@
 package com.github.whatasame.beannaming;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
@@ -12,7 +15,8 @@ import org.springframework.context.ApplicationContext;
 @DisplayName("학습 테스트: 빈 네이밍 테스트")
 class BeanNamingTest {
 
-    @Autowired ApplicationContext applicationContext;
+    @Autowired
+    ApplicationContext applicationContext;
 
     @Test
     @DisplayName("Component의 이름을 지정하지 않으면 클래스 이름에서 첫 글자를 소문자로 바꾼 이름을 사용한다.")
@@ -64,5 +68,27 @@ class BeanNamingTest {
         assertThat(applicationContext.getBean("super-duper-bean"))
                 .isNotNull()
                 .isExactlyInstanceOf(NamedBean.class);
+    }
+
+    @Test
+    @DisplayName("동일한 클래스의 빈이 여러개 존재할 경우, 빈 이름으로 조회해야한다.")
+    void findBeanByNameInDuplicatedClassBean() {
+        /* given */
+
+        /* when */
+
+        /* then */
+        assertAll(
+                () ->
+                        assertThatCode(() -> applicationContext.getBean(Animal.class))
+                                .isExactlyInstanceOf(NoUniqueBeanDefinitionException.class),
+                () ->
+                        assertThat(applicationContext.getBean("dog"))
+                                .isNotNull()
+                                .isExactlyInstanceOf(Dog.class),
+                () ->
+                        assertThat(applicationContext.getBean("cat"))
+                                .isNotNull()
+                                .isExactlyInstanceOf(Cat.class));
     }
 }
