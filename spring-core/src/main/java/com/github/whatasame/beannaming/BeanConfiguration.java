@@ -1,7 +1,9 @@
 package com.github.whatasame.beannaming;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 interface Animal {}
 
@@ -18,12 +20,12 @@ public class BeanConfiguration {
         return new NamedBean();
     }
 
-    @Bean
+    @Bean(name = "dog")
     public Animal dog() {
         return new Dog();
     }
 
-    @Bean
+    @Bean(name = "cat")
     public Animal cat() {
         return new Cat();
     }
@@ -36,3 +38,15 @@ class NamedBean {}
 class Dog implements Animal {}
 
 class Cat implements Animal {}
+
+@Component
+class Circus {
+
+    private final Animal dog;
+    private final Animal cat;
+
+    public Circus(@Qualifier("dog") final Animal dog, @Qualifier("cat") final Animal cat) {
+        this.dog = dog;
+        this.cat = cat;
+    }
+}

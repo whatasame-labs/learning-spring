@@ -15,8 +15,7 @@ import org.springframework.context.ApplicationContext;
 @DisplayName("학습 테스트: 빈 네이밍 테스트")
 class BeanNamingTest {
 
-    @Autowired
-    ApplicationContext applicationContext;
+    @Autowired ApplicationContext applicationContext;
 
     @Test
     @DisplayName("Component의 이름을 지정하지 않으면 클래스 이름에서 첫 글자를 소문자로 바꾼 이름을 사용한다.")
@@ -90,5 +89,18 @@ class BeanNamingTest {
                         assertThat(applicationContext.getBean("cat"))
                                 .isNotNull()
                                 .isExactlyInstanceOf(Cat.class));
+    }
+
+    @Test
+    @DisplayName("동일한 클래스의 빈이 여러개 존재할 경우, @Qualifier로 구분하여 주입받아야한다.")
+    void injectBeanByQualifierInDuplicatedClassBean() {
+        /* given */
+
+        /* when */
+
+        /* then */
+        assertThat(applicationContext.getBean(Circus.class))
+                .isNotNull()
+                .isExactlyInstanceOf(Circus.class);
     }
 }
