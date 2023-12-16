@@ -120,4 +120,16 @@ class BeanNamingTest {
                 .isNotNull()
                 .isExactlyInstanceOf(Circus.class);
     }
+
+    @Test
+    @DisplayName("@Primary를 사용하면 해당 빈이 우선적으로 주입된다.")
+    void injectBeanByPrimary() {
+        /* given */
+
+        /* when */
+        final Circus circus = applicationContext.getBean(Circus.class);
+
+        /* then */
+        assertThat(circus.getPolicy()).isNotNull().isExactlyInstanceOf(FixedPolicy.class);
+    }
 }
