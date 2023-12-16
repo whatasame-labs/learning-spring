@@ -12,9 +12,7 @@ If you don't specify a bean name, Spring generates a bean name from Class name w
 
 ```java
 @Component
-public class DefaultComponent {
-
-}
+public class DefaultComponent {}
 
 @Configuration
 public class BeanConfiguration {
@@ -33,10 +31,8 @@ This will generate a bean name `defaultComponent` and `defaultBean`.
 You can specify a bean name explicitly by using the `name` attribute of the `@Component` annotation.
 
 ```java
-@Component
-public class DefaultComponent {
-
-}
+@Component("super-duper-component")
+public class NamedComponent {}
 
 @Configuration
 public class BeanConfiguration {
@@ -48,7 +44,7 @@ public class BeanConfiguration {
 }
 ```
 
-This will generate a bean name `defaultComponent` and  `super-duper-bean` .
+This will generate a bean name `super-duper-component` and  `super-duper-bean` .
 
 ## How to find injected target bean?
 
