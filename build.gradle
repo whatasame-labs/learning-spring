@@ -7,10 +7,6 @@ plugins {
 
 bootJar.enabled = false
 
-repositories {
-    mavenCentral()
-}
-
 subprojects {
     group = 'com.github.whatasame'
     version = '1.0.0'
@@ -19,6 +15,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'com.diffplug.spotless'
 
     dependencies {
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -34,19 +31,19 @@ subprojects {
     test {
         useJUnitPlatform()
     }
-}
 
-spotless {
-    java {
-        importOrder()
+    spotless {
+        java {
+            importOrder()
 
-        removeUnusedImports()
+            removeUnusedImports()
 
-        cleanthat()
+            cleanthat()
 
-        googleJavaFormat()
-                .aosp()
+            googleJavaFormat()
+                    .aosp()
 
-        formatAnnotations()
+            formatAnnotations()
+        }
     }
 }
