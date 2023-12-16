@@ -27,4 +27,17 @@ class BeanNamingTest {
                 .isNotNull()
                 .isExactlyInstanceOf(DefaultComponent.class);
     }
+
+    @Test
+    @DisplayName("Component의 value 필드로 이름을 지정하면 지정한 이름을 사용한다.")
+    void componentValueNaming() {
+        /* given */
+
+        /* when */
+
+        /* then */
+        assertThat(applicationContext.getBean("super-duper-component"))
+                .isNotNull()
+                .isExactlyInstanceOf(NamedComponent.class);
+    }
 }
