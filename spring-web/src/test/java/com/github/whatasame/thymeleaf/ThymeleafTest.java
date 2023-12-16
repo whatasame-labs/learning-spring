@@ -32,4 +32,19 @@ class ThymeleafTest {
                 .body(containsString("<p>Launch: <span>pizza</span></p>"))
                 .body(containsString("<p>Dinner: <span>chicken</span></p>"));
     }
+
+    @Test
+    @DisplayName("Iteration attribute를 사용하여 템플릿을 렌더링한다.")
+    void iterationAttribute() {
+        given().when()
+                .get("/thymeleaf/library")
+                .then()
+                .statusCode(200)
+                .body(containsString("<td>The Great Gatsby</td>"))
+                .body(containsString("<td>F. Scott Fitzgerald</td>"))
+                .body(containsString("<td>To Kill a Mockingbird</td>"))
+                .body(containsString("<td>Harper Lee</td>"))
+                .body(containsString("<td>1984</td>"))
+                .body(containsString("<td>George Orwell</td>"));
+    }
 }
