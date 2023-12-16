@@ -1,5 +1,3 @@
 package com.github.whatasame;
 
-class SpringDataJpaApplicationTest {
-
-}
+class SpringDataJpaApplicationTest {}

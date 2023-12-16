@@ -1,5 +1,3 @@
 package com.github.whatasame;
 
-class SpringCoreApplicationTest {
-
-}
+class SpringCoreApplicationTest {}
