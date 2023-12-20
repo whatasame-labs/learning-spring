@@ -14,8 +14,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class SessionTest {
 
-    @LocalServerPort
-    int port;
+    @LocalServerPort int port;
 
     SessionFilter sessionFilter;
 
@@ -28,25 +27,21 @@ class SessionTest {
     @Test
     @DisplayName("서버에 처음 접속하면 새로운 세션이 생성된다.")
     void newSession() {
-        RestAssured.given().when()
+        RestAssured.given()
+                .when()
                 .get("/session")
                 .then()
                 .statusCode(200)
-                .body(equalTo("Greetings new user!"));
+                .body(equalTo("Greeting new user!"));
     }
 
     @Test
     @DisplayName("서버에 두 번째 접속하면 기존 세션이 유지된다.")
     void oldSession() {
-        RestAssured
-                .given()
-                .filter(sessionFilter)
-                .when()
-                .get("/session/")
-                .then()
-                .statusCode(200);
+        RestAssured.given().filter(sessionFilter).when().get("/session").then().statusCode(200);
 
-        RestAssured.given().filter(sessionFilter)
+        RestAssured.given()
+                .filter(sessionFilter)
                 .when()
                 .get("/session")
                 .then()

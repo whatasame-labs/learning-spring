@@ -11,7 +11,7 @@ public class SessionController {
 
     private static final String VISIT_COUNT = "visit-count";
 
-    @GetMapping({"/", ""})
+    @GetMapping("")
     public String session(final HttpSession session) {
         if (session.isNew()) {
             session.setAttribute(VISIT_COUNT, 1);
