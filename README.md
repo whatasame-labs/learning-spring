@@ -11,7 +11,8 @@ consists of a set of tests that demonstrate the usage of the dependency.
 
 ### Spring Core
 
-The core components of Spring framework.
+- [Bean naming](spring-core/src/test/java/com/github/whatasame/beannaming): How to name and specifiy a bean between
+  multiple beans.
 
 ### Spring Web
 
