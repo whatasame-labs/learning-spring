@@ -6,10 +6,20 @@ hands-on coding and testing.
 
 ## Introduction
 
-This repository is organized into a series of modules representing a dependency in Spring framework. Each module is
+This repository is organized into a series of modules representing a dependency in Spring framework. Each module
 consists of a set of tests that demonstrate the usage of the dependency.
-Explore the topics in following modules.
 
-* [Spring Core](./spring-core): The core components of Spring framework.
-* [Spring Web](./spring-web): The web components of Spring framework.
-* [Spring Data JPA](./spring-data-jpa): The data access components of Spring framework.
+### Spring Core
+
+- [Bean naming](spring-core/src/test/java/com/github/whatasame/beannaming): How to name and specifiy a bean between
+  multiple beans.
+
+### Spring Web
+
+- [ThymeLeaf](spring-web/src/test/java/com/github/whatasame/thymeleaf): Why use ThymeLeaf instead of JSP and how to use
+  it in Spring MVC.
+- [Session](spring-web/src/test/java/com/github/whatasame/session): How to use session in Spring MVC.
+
+### Spring Data JPA
+
+The data access components of Spring framework.
