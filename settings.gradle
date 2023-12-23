@@ -1,5 +1,5 @@
 rootProject.name = 'learning-spring'
-include 'spring-web'
 include 'spring-core'
 include 'spring-data-jpa'
-
+include 'spring-library'
+include 'spring-web'
