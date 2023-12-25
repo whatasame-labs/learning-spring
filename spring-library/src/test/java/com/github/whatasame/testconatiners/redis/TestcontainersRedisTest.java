@@ -3,12 +3,12 @@ package com.github.whatasame.testconatiners.redis;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-import com.redis.testcontainers.RedisContainer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
@@ -19,8 +19,8 @@ import org.testcontainers.utility.DockerImageName;
 class TestcontainersRedisTest {
 
     @Container @ServiceConnection
-    static final RedisContainer REDIS_CONTAINER =
-            new RedisContainer(DockerImageName.parse("redis:latest")).withExposedPorts(6379);
+    static final GenericContainer<?> REDIS_CONTAINER =
+            new GenericContainer<>(DockerImageName.parse("redis:latest")).withExposedPorts(6379);
 
     @Autowired ProductService productService;
 
