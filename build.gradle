@@ -47,3 +47,9 @@ subprojects {
         }
     }
 }
+
+task updateGitHooks(type: Copy) {
+    from './scripts/pre-commit'
+    into './.git/hooks'
+}
+compileJava.dependsOn(updateGitHooks)
