@@ -27,10 +27,8 @@ class TestcontainersRedisTest {
     /* Can be replaced to @ServiceConnection since Spring Boot 3.1 */
     //    @DynamicPropertySource
     //    static void registerRedisProperties(final DynamicPropertyRegistry registry) {
-    //        registry.add("spring.data.redis.host", REDIS_CONTAINER::getHost); //
-    // "spring.redis.host" for Spring Boot 2.x
-    //        registry.add("spring.data.redis.port", REDIS_CONTAINER::getFirstMappedPort); //
-    // "spring.redis.port" for Spring Boot 2.x
+    //        registry.add("spring.data.redis.host", REDIS_CONTAINER::getHost);
+    //        registry.add("spring.data.redis.port", REDIS_CONTAINER::getFirstMappedPort);
     //    }
 
     @Test
