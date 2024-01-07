@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @RedisTest
 @SpringBootTest
+@DisplayName("학습 테스트: @RedisTest")
 class ExtensionTest {
 
     @Autowired ProductService productService;
