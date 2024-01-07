@@ -1,11 +1,12 @@
 package com.github.whatasame.testconatiners.redis.extension;
 
+import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.utility.DockerImageName;
 
-public class RedisContainerExtension implements BeforeAllCallback {
+public class RedisContainerExtension implements BeforeAllCallback, AfterEachCallback {
 
     static final GenericContainer<?> REDIS_CONTAINER =
             new GenericContainer<>(DockerImageName.parse("redis:latest")).withExposedPorts(6379);
@@ -20,5 +21,10 @@ public class RedisContainerExtension implements BeforeAllCallback {
         System.setProperty("spring.data.redis.host", REDIS_CONTAINER.getHost());
         System.setProperty(
                 "spring.data.redis.port", REDIS_CONTAINER.getMappedPort(6379).toString());
+    }
+
+    @Override
+    public void afterEach(final ExtensionContext context) throws Exception {
+        /* do rollback container (e.g. truncate table) */
     }
 }
