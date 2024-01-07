@@ -1,4 +1,4 @@
-package com.github.whatasame.testconatiners.redis;
+package com.github.whatasame.testconatiners.redis.extension;
 
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
