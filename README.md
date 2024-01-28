@@ -23,7 +23,8 @@ consists of a set of tests that demonstrate the usage of the dependency.
 
 ### Spring Data JPA
 
-The data access components of Spring framework.
+- [Identifier](spring-data-jpa/src/test/java/com/github/whatasame/identifier): Kinds of identifier in JPA and
+  implementation in Hibernate.
 
 ### Spring library
 
