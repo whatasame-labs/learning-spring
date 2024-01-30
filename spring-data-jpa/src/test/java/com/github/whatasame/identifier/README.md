@@ -103,3 +103,7 @@ public class DefaultMergeEventListener {
     }
 }
 ```
+
+## References
+
+* [3.6.1. Simple identifiers - Hibernate ORM User Guide](https://docs.jboss.org/hibernate/orm/6.4/userguide/html_single/Hibernate_User_Guide.html#identifiers-simple)
