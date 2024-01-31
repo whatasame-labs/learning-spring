@@ -23,6 +23,8 @@ consists of a set of tests that demonstrate the usage of the dependency.
 
 ### Spring Data JPA
 
+- [Persistence context](spring-data-jpa/src/test/java/com/github/whatasame/persistencecontext): What is persistence
+  context and how does it work in different type of.
 - [Identifier](spring-data-jpa/src/test/java/com/github/whatasame/identifier): Kinds of identifier in JPA and
   implementation in Hibernate.
 
