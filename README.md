@@ -20,6 +20,7 @@ consists of a set of tests that demonstrate the usage of the dependency.
 - [ThymeLeaf](spring-web/src/test/java/com/github/whatasame/thymeleaf): Why use ThymeLeaf instead of JSP and how to use
   it in Spring MVC.
 - [Session](spring-web/src/test/java/com/github/whatasame/session): How to use session in Spring MVC.
+- [WebClient](spring-web/src/test/java/com/github/whatasame/webclient): How to use WebClient and test with mock server.
 
 ### Spring Data JPA
 
