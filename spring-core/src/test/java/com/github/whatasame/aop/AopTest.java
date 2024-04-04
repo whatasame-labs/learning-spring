@@ -12,8 +12,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 @DisplayName("학습 테스트: AOP")
 class AopTest {
 
-    @Autowired AopComponent component;
-    @Autowired AopLogger logger;
+    @Autowired
+    AopComponent component;
+
+    @Autowired
+    AopLogger logger;
 
     @AfterEach
     void tearDown() {

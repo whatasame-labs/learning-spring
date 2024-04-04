@@ -15,7 +15,8 @@ import org.springframework.context.ApplicationContext;
 @DisplayName("학습 테스트: 빈 네이밍 테스트")
 class BeanNamingTest {
 
-    @Autowired ApplicationContext applicationContext;
+    @Autowired
+    ApplicationContext applicationContext;
 
     @Test
     @DisplayName("Component의 이름을 지정하지 않으면 클래스 이름에서 첫 글자를 소문자로 바꾼 이름을 사용한다.")
@@ -51,9 +52,7 @@ class BeanNamingTest {
         /* when */
 
         /* then */
-        assertThat(applicationContext.getBean("defaultBean"))
-                .isNotNull()
-                .isExactlyInstanceOf(DefaultBean.class);
+        assertThat(applicationContext.getBean("defaultBean")).isNotNull().isExactlyInstanceOf(DefaultBean.class);
     }
 
     @Test
@@ -64,9 +63,7 @@ class BeanNamingTest {
         /* when */
 
         /* then */
-        assertThat(applicationContext.getBean("super-duper-bean"))
-                .isNotNull()
-                .isExactlyInstanceOf(NamedBean.class);
+        assertThat(applicationContext.getBean("super-duper-bean")).isNotNull().isExactlyInstanceOf(NamedBean.class);
     }
 
     @Test
@@ -80,10 +77,8 @@ class BeanNamingTest {
         final Object neko = applicationContext.getBean("neko");
 
         /* then */
-        assertAll(
-                () -> assertThat(cat).isEqualTo(kitty),
-                () -> assertThat(cat).isEqualTo(neko),
-                () -> assertThat(kitty).isEqualTo(neko));
+        assertAll(() -> assertThat(cat).isEqualTo(kitty), () -> assertThat(cat).isEqualTo(neko), () -> assertThat(kitty)
+                .isEqualTo(neko));
     }
 
     @Test
@@ -95,17 +90,10 @@ class BeanNamingTest {
 
         /* then */
         assertAll(
-                () ->
-                        assertThatCode(() -> applicationContext.getBean(Animal.class))
-                                .isExactlyInstanceOf(NoUniqueBeanDefinitionException.class),
-                () ->
-                        assertThat(applicationContext.getBean("dog"))
-                                .isNotNull()
-                                .isExactlyInstanceOf(Dog.class),
-                () ->
-                        assertThat(applicationContext.getBean("cat"))
-                                .isNotNull()
-                                .isExactlyInstanceOf(Cat.class));
+                () -> assertThatCode(() -> applicationContext.getBean(Animal.class))
+                        .isExactlyInstanceOf(NoUniqueBeanDefinitionException.class),
+                () -> assertThat(applicationContext.getBean("dog")).isNotNull().isExactlyInstanceOf(Dog.class),
+                () -> assertThat(applicationContext.getBean("cat")).isNotNull().isExactlyInstanceOf(Cat.class));
     }
 
     @Test
@@ -116,9 +104,7 @@ class BeanNamingTest {
         /* when */
 
         /* then */
-        assertThat(applicationContext.getBean(Circus.class))
-                .isNotNull()
-                .isExactlyInstanceOf(Circus.class);
+        assertThat(applicationContext.getBean(Circus.class)).isNotNull().isExactlyInstanceOf(Circus.class);
     }
 
     @Test

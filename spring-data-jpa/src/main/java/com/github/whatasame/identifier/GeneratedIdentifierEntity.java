@@ -11,5 +11,7 @@ import lombok.Setter;
 @Setter
 public class GeneratedIdentifierEntity {
 
-    @Id @GeneratedValue private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 }

@@ -41,9 +41,7 @@ subprojects {
 
             cleanthat()
 
-            googleJavaFormat()
-                    .aosp()
-
+            palantirJavaFormat()
 //            formatAnnotations()
         }
     }

@@ -15,7 +15,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 @DataJpaTest
 class IdentifierTest {
 
-    @Autowired EntityManager entityManager;
+    @Autowired
+    EntityManager entityManager;
 
     @AfterEach
     void tearDown() {
@@ -59,8 +60,7 @@ class IdentifierTest {
         entity.setId(777L);
 
         /* when & then */
-        assertThatCode(() -> entityManager.persist(entity))
-                .isExactlyInstanceOf(EntityExistsException.class);
+        assertThatCode(() -> entityManager.persist(entity)).isExactlyInstanceOf(EntityExistsException.class);
     }
 
     @Test

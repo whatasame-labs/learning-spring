@@ -13,7 +13,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 @DataJpaTest
 class GeneratedIdentifierTest {
 
-    @Autowired EntityManager entityManager;
+    @Autowired
+    EntityManager entityManager;
 
     @Nested
     @DisplayName("자동 키 생성 전략이 AUTO일 때")
@@ -67,8 +68,7 @@ class GeneratedIdentifierTest {
         void identity() {
             final IdentityStrategyEntity entity = new IdentityStrategyEntity();
 
-            entityManager.persist(
-                    entity); // ID 값을 알기 위해 INSERT를 수행해야하므로 flush 하지 않아도 insert 쿼리가 실행된다.
+            entityManager.persist(entity); // ID 값을 알기 위해 INSERT를 수행해야하므로 flush 하지 않아도 insert 쿼리가 실행된다.
 
             assertThat(entity.getId()).isNotNull();
         }

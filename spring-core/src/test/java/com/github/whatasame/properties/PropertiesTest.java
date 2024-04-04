@@ -13,14 +13,14 @@ import org.springframework.context.ApplicationContext;
 @DisplayName("학습 테스트: Properties")
 class PropertiesTest {
 
-    @Autowired ApplicationContext applicationContext;
+    @Autowired
+    ApplicationContext applicationContext;
 
     @Test
     @DisplayName("생성자가 하나인 클래스는 `@ConstructorBinding`을 생략하여 사용할 수 있다.")
     void immutablePropertiesWithUniqueConstructor() {
         /* given */
-        final ImmutableProperties immutableProperties =
-                applicationContext.getBean(ImmutableProperties.class);
+        final ImmutableProperties immutableProperties = applicationContext.getBean(ImmutableProperties.class);
 
         /* when & then */
         assertAll(
@@ -32,8 +32,7 @@ class PropertiesTest {
     @DisplayName("Record를 이용해서 `@ConfigurationProperties` 클래스를 정의할 수 있다.")
     void recordProperties() {
         /* given */
-        final RecordProperties recordProperties =
-                applicationContext.getBean(RecordProperties.class);
+        final RecordProperties recordProperties = applicationContext.getBean(RecordProperties.class);
 
         /* when & then */
         assertAll(
@@ -45,8 +44,7 @@ class PropertiesTest {
     @DisplayName("Nested properites도 정의할 수 있다.")
     void nestedProperties() {
         /* given */
-        final NestedProperties nestedProperties =
-                applicationContext.getBean(NestedProperties.class);
+        final NestedProperties nestedProperties = applicationContext.getBean(NestedProperties.class);
 
         /* when & then */
         assertAll(

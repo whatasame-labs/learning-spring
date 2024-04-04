@@ -14,7 +14,8 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class SessionTest {
 
-    @LocalServerPort int port;
+    @LocalServerPort
+    int port;
 
     SessionFilter sessionFilter;
 
@@ -32,7 +33,7 @@ class SessionTest {
                 .get("/session")
                 .then()
                 .statusCode(200)
-                .body(equalTo("Greeting new user!"));
+                .body(equalTo("Greeting new user! You are the first time visitor."));
     }
 
     @Test

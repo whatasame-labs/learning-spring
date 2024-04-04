@@ -16,7 +16,7 @@ public class SessionController {
         if (session.isNew()) {
             session.setAttribute(VISIT_COUNT, 1);
 
-            return "Greeting new user!";
+            return "Greeting new user! You are the first time visitor.";
         } else {
             final int count = (int) session.getAttribute(VISIT_COUNT);
             session.setAttribute(VISIT_COUNT, count + 1);

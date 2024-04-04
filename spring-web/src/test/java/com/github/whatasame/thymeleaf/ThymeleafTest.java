@@ -14,7 +14,8 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class ThymeleafTest {
 
-    @LocalServerPort int port;
+    @LocalServerPort
+    int port;
 
     @BeforeEach
     public void setup() {

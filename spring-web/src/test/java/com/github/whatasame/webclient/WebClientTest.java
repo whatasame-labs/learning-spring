@@ -45,17 +45,16 @@ public class WebClientTest {
     @DisplayName("200 반환 시 정상적으로 응답을 객체로 변환한다.")
     void status200() {
         /* given */
-        mockWebServer.enqueue(
-                new MockResponse()
-                        .addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                        .setBody(
-                                """
-                                    {
-                                      "email": "test@email.com",
-                                      "password": "password"
-                                    }
-                                """)
-                        .setResponseCode(200));
+        mockWebServer.enqueue(new MockResponse()
+                .addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .setBody(
+                        """
+                           {
+                              "email": "test@email.com",
+                              "password": "password"
+                            }
+                        """)
+                .setResponseCode(200));
 
         /* when */
         final Mono<Member> memberMono =
@@ -71,34 +70,27 @@ public class WebClientTest {
     @DisplayName("4xx 반환 시 예외를 던진다.")
     void status4xx() {
         /* given */
-        mockWebServer.enqueue(
-                new MockResponse()
-                        .addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                        .setBody(
-                                """
-                                  "error": "Not Found"
-                                """)
-                        .setResponseCode(404));
+        mockWebServer.enqueue(new MockResponse()
+                .addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .setBody("""
+                          "error": "Not Found"
+                        """)
+                .setResponseCode(404));
 
         /* when */
-        final Mono<Member> memberMono =
-                webClient
-                        .get()
-                        .uri("/member/me")
-                        .retrieve()
-                        .onStatus(
-                                HttpStatusCode::is4xxClientError,
-                                response ->
-                                        Mono.error(
-                                                new IllegalArgumentException("Invalid request.")))
-                        .bodyToMono(Member.class);
+        final Mono<Member> memberMono = webClient
+                .get()
+                .uri("/member/me")
+                .retrieve()
+                .onStatus(
+                        HttpStatusCode::is4xxClientError,
+                        response -> Mono.error(new IllegalArgumentException("Invalid request.")))
+                .bodyToMono(Member.class);
 
         /* then */
         StepVerifier.create(memberMono)
-                .expectErrorMatches(
-                        throwable ->
-                                throwable instanceof IllegalArgumentException
-                                        && throwable.getMessage().equals("Invalid request."))
+                .expectErrorMatches(throwable -> throwable instanceof IllegalArgumentException
+                        && throwable.getMessage().equals("Invalid request."))
                 .verify();
     }
 
@@ -106,42 +98,30 @@ public class WebClientTest {
     @DisplayName("401 반환 시 구체적인 예외를 던진다.")
     void status401() {
         /* given */
-        mockWebServer.enqueue(
-                new MockResponse()
-                        .addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                        .setBody(
-                                """
-                                  "error": "Unauthorized"
-                                """)
-                        .setResponseCode(401));
+        mockWebServer.enqueue(new MockResponse()
+                .addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .setBody("""
+                          "error": "Unauthorized"
+                        """)
+                .setResponseCode(401));
 
         /* when */
-        final Mono<Member> memberMono =
-                webClient
-                        .get()
-                        .uri("/member/me")
-                        .retrieve()
-                        .onStatus(
-                                status ->
-                                        status.isSameCodeAs(
-                                                HttpStatus.UNAUTHORIZED), // order is important
-                                response ->
-                                        Mono.error(
-                                                new AuthenticationException(
-                                                        "Not allowed to access.")))
-                        .onStatus(
-                                HttpStatusCode::is4xxClientError,
-                                response ->
-                                        Mono.error(
-                                                new IllegalArgumentException("Invalid request.")))
-                        .bodyToMono(Member.class);
+        final Mono<Member> memberMono = webClient
+                .get()
+                .uri("/member/me")
+                .retrieve()
+                .onStatus(
+                        status -> status.isSameCodeAs(HttpStatus.UNAUTHORIZED), // order is important
+                        response -> Mono.error(new AuthenticationException("Not allowed to access.")))
+                .onStatus(
+                        HttpStatusCode::is4xxClientError,
+                        response -> Mono.error(new IllegalArgumentException("Invalid request.")))
+                .bodyToMono(Member.class);
 
         /* then */
         StepVerifier.create(memberMono)
-                .expectErrorMatches(
-                        throwable ->
-                                throwable instanceof AuthenticationException
-                                        && throwable.getMessage().equals("Not allowed to access."))
+                .expectErrorMatches(throwable -> throwable instanceof AuthenticationException
+                        && throwable.getMessage().equals("Not allowed to access."))
                 .verify();
     }
 
@@ -149,25 +129,24 @@ public class WebClientTest {
     @DisplayName("Timeout 시 예외를 던진다.")
     void timeout() {
         /* given */
-        mockWebServer.enqueue(
-                new MockResponse()
-                        .addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                        .setBody(
-                                """
-                                {
-                                  "email": "test@email.com",
-                                  "password": "password"
-                                  }""")
-                        .setBodyDelay(500, MILLISECONDS));
+        mockWebServer.enqueue(new MockResponse()
+                .addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .setBody(
+                        """
+                        {
+                          "email": "test@email.com",
+                          "password": "password"
+                          }
+                          """)
+                .setBodyDelay(500, MILLISECONDS));
 
         /* when */
-        final Mono<Member> memberMono =
-                webClient
-                        .get()
-                        .uri("/member/me")
-                        .retrieve()
-                        .bodyToMono(Member.class)
-                        .timeout(Duration.ofMillis(100));
+        final Mono<Member> memberMono = webClient
+                .get()
+                .uri("/member/me")
+                .retrieve()
+                .bodyToMono(Member.class)
+                .timeout(Duration.ofMillis(100));
 
         /* then */
         StepVerifier.create(memberMono).expectError(TimeoutException.class).verify();

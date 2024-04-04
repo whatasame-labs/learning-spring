@@ -21,11 +21,10 @@ public class ThymeleafController {
 
     @GetMapping("/library")
     public String library(final Model model) {
-        final List<Book> books =
-                List.of(
-                        new Book("The Great Gatsby", "F. Scott Fitzgerald"),
-                        new Book("To Kill a Mockingbird", "Harper Lee"),
-                        new Book("1984", "George Orwell"));
+        final List<Book> books = List.of(
+                new Book("The Great Gatsby", "F. Scott Fitzgerald"),
+                new Book("To Kill a Mockingbird", "Harper Lee"),
+                new Book("1984", "George Orwell"));
 
         model.addAttribute("books", books);
 

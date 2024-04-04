@@ -14,7 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @DisplayName("학습 테스트: @RedisTest")
 class ExtensionTest {
 
-    @Autowired ProductService productService;
+    @Autowired
+    ProductService productService;
 
     @Test
     @DisplayName("Annotation 기반으로 Redis 컨테이너의 생명주기를 관리한다.")
