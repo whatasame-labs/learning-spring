@@ -10,5 +10,6 @@ import lombok.Setter;
 @Setter
 public class AssignedIdentifierEntity {
 
-    @Id private Long id;
+    @Id
+    private Long id;
 }

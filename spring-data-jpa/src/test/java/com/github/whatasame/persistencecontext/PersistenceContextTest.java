@@ -15,24 +15,24 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class PersistenceContextTest {
 
-    @Autowired TransactionPersistenceContext transactionContext;
+    @Autowired
+    TransactionPersistenceContext transactionContext;
 
-    @Autowired ExtendedPersistenceContext extendedContext;
+    @Autowired
+    ExtendedPersistenceContext extendedContext;
 
     @Nested
     @DisplayName("Transaction type은")
     class TransactionType {
 
         @Test
-        @DisplayName(
-                "Transaction 종료 시 persistence context에 있는 entity를 persistence storage에 flush한다.")
+        @DisplayName("Transaction 종료 시 persistence context에 있는 entity를 persistence storage에 flush한다.")
         void flushPersistenceContextToStorage() {
             final Member member = new Member("whatasame");
 
             transactionContext.saveWithTransaction(member); // flush and commit
 
-            assertThat(transactionContext.find(member.getId()))
-                    .isNotNull(); // not exists in context so query sql
+            assertThat(transactionContext.find(member.getId())).isNotNull(); // not exists in context so query sql
         }
 
         @Test
@@ -42,8 +42,7 @@ public class PersistenceContextTest {
 
             assertThatCode(() -> transactionContext.saveWithoutTransaction(member))
                     .isExactlyInstanceOf(TransactionRequiredException.class)
-                    .hasMessageContaining(
-                            "No EntityManager with actual transaction available for current thread");
+                    .hasMessageContaining("No EntityManager with actual transaction available for current thread");
         }
     }
 
@@ -52,8 +51,7 @@ public class PersistenceContextTest {
     class ExtendedType {
 
         @Test
-        @DisplayName(
-                "Transaction 종료 시 persistence context에 있는 entity를 persistence storage에 flush한다.")
+        @DisplayName("Transaction 종료 시 persistence context에 있는 entity를 persistence storage에 flush한다.")
         void notFlushPersistenceContextToStorage() {
             final Member member = new Member("whatasame");
 
@@ -70,12 +68,10 @@ public class PersistenceContextTest {
             extendedContext.saveWithoutTransaction(member);
 
             assertAll(
-                    () ->
-                            assertThat(extendedContext.find(member.getId()))
-                                    .isNotNull(), // exists in context so does not query sql
-                    () ->
-                            assertThat(transactionContext.find(member.getId()))
-                                    .isNull()); // but other context does not know so query sql
+                    () -> assertThat(extendedContext.find(member.getId()))
+                            .isNotNull(), // exists in context so does not query sql
+                    () -> assertThat(transactionContext.find(member.getId()))
+                            .isNull()); // but other context does not know so query sql
         }
     }
 }

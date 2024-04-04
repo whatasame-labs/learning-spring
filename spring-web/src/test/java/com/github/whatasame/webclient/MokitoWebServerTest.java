@@ -14,17 +14,23 @@ import reactor.test.StepVerifier;
 @ExtendWith(MockitoExtension.class)
 public class MokitoWebServerTest {
 
-    @Mock WebClient webClientMock;
+    @Mock
+    WebClient webClientMock;
 
-    @Mock WebClient.RequestHeadersSpec requestHeadersSpecMock;
+    @Mock
+    WebClient.RequestHeadersSpec requestHeadersSpecMock;
 
-    @Mock WebClient.RequestHeadersUriSpec requestHeadersUriSpecMock;
+    @Mock
+    WebClient.RequestHeadersUriSpec requestHeadersUriSpecMock;
 
-    @Mock WebClient.RequestBodySpec requestBodySpecMock;
+    @Mock
+    WebClient.RequestBodySpec requestBodySpecMock;
 
-    @Mock WebClient.RequestBodyUriSpec requestBodyUriSpecMock;
+    @Mock
+    WebClient.RequestBodyUriSpec requestBodyUriSpecMock;
 
-    @Mock WebClient.ResponseSpec responseSpecMock;
+    @Mock
+    WebClient.ResponseSpec responseSpecMock;
 
     @Test
     @DisplayName("GET 요청 테스트: 회원 정보 조회")
@@ -58,13 +64,12 @@ public class MokitoWebServerTest {
         when(responseSpecMock.bodyToMono(Long.class)).thenReturn(Mono.just(777L));
 
         /* when */
-        final Mono<Long> memberIdMono =
-                webClientMock
-                        .post()
-                        .uri("/member/signup")
-                        .bodyValue(member) // use same member object as mock parameter
-                        .retrieve()
-                        .bodyToMono(Long.class);
+        final Mono<Long> memberIdMono = webClientMock
+                .post()
+                .uri("/member/signup")
+                .bodyValue(member) // use same member object as mock parameter
+                .retrieve()
+                .bodyToMono(Long.class);
 
         /* then */
         StepVerifier.create(memberIdMono).expectNext(777L).verifyComplete();

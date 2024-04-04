@@ -64,10 +64,7 @@ class Circus {
     private final Animal cat;
     private final Policy policy;
 
-    public Circus(
-            @Qualifier("dog") final Animal dog,
-            @Qualifier("cat") final Animal cat,
-            final Policy policy) {
+    public Circus(@Qualifier("dog") final Animal dog, @Qualifier("cat") final Animal cat, final Policy policy) {
         this.dog = dog;
         this.cat = cat;
         this.policy = policy;

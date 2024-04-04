@@ -18,11 +18,13 @@ import org.testcontainers.utility.DockerImageName;
 @DisplayName("학습 테스트: Testcontainers Redis")
 class TestcontainersRedisTest {
 
-    @Container @ServiceConnection
+    @Container
+    @ServiceConnection
     static final GenericContainer<?> REDIS_CONTAINER =
             new GenericContainer<>(DockerImageName.parse("redis:latest")).withExposedPorts(6379);
 
-    @Autowired ProductService productService;
+    @Autowired
+    ProductService productService;
 
     /* Can be replaced to @ServiceConnection since Spring Boot 3.1 */
     //    @DynamicPropertySource
