@@ -14,6 +14,7 @@ consists of a set of tests that demonstrate the usage of the dependency.
 - [AOP](spring-core/src/test/java/com/github/whatasame/aop): How works Spring AOP and how to use it.
 - [Bean naming](spring-core/src/test/java/com/github/whatasame/beannaming): How to name and specifiy a bean between
   multiple beans.
+- [Properties](spring-core/src/test/java/com/github/whatasame/properties): How to bind external properties to a bean.
 
 ### Spring Web
 
