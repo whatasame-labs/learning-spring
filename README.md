@@ -37,4 +37,10 @@ consists of a set of tests that demonstrate the usage of the dependency.
 
 ### Spring Security
 
-- [Architecture](spring-security/src/main/java/com/github/whatasame/architecture): How Spring Security works in Servlet.
+- [Architecture](spring-security/Architecture.md): How Spring Security works in Servlet.
+- [Authentication](spring-security/Authentication.md): How Spring Security authenticates a user.
+
+This module also implements several features:
+
+* Authentication with email and password using Security Filter and issue JWT token.
+

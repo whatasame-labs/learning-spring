@@ -1,0 +1,5 @@
+jwt:
+  access-token-secret: c9e3f7a1bc756fd48fe289c5f5784dda346fce89ab395c678dd3ab8223de84d6475c83146abb89293b1ae211f65de8d4b2c3d7e65f6a3a89720c3520367eaf19
+  refresh-token-secret: b7f2e6ffc9643ge26egd88b4d4673cbb234abe67fb284b466dd39f7112cb73c5254b720359889738c2gfb000e54ce5c3b9c19d53b5972g98679e2418145bfc5d
+  access-token-expiration: 86400000 # 1 day
+  refresh-token-expiration: 604800000 # 7 days
