@@ -11,28 +11,28 @@ consists of a set of tests that demonstrate the usage of the dependency.
 
 ### Spring Core
 
-- [AOP](spring-core/src/test/java/com/github/whatasame/aop): How works Spring AOP and how to use it.
-- [Bean naming](spring-core/src/test/java/com/github/whatasame/beannaming): How to name and specifiy a bean between
+- [AOP](spring-core/src/test/java/com/whatasame/aop): How works Spring AOP and how to use it.
+- [Bean naming](spring-core/src/test/java/com/whatasame/beannaming): How to name and specifiy a bean between
   multiple beans.
-- [Properties](spring-core/src/test/java/com/github/whatasame/properties): How to bind external properties to a bean.
+- [Properties](spring-core/src/test/java/com/whatasame/properties): How to bind external properties to a bean.
 
 ### Spring Web
 
-- [ThymeLeaf](spring-web/src/test/java/com/github/whatasame/thymeleaf): Why use ThymeLeaf instead of JSP and how to use
+- [ThymeLeaf](spring-web/src/test/java/com/whatasame/thymeleaf): Why use ThymeLeaf instead of JSP and how to use
   it in Spring MVC.
-- [Session](spring-web/src/test/java/com/github/whatasame/session): How to use session in Spring MVC.
-- [WebClient](spring-web/src/test/java/com/github/whatasame/webclient): How to use WebClient and test with mock server.
+- [Session](spring-web/src/test/java/com/whatasame/session): How to use session in Spring MVC.
+- [WebClient](spring-web/src/test/java/com/whatasame/webclient): How to use WebClient and test with mock server.
 
 ### Spring Data JPA
 
-- [Persistence context](spring-data-jpa/src/test/java/com/github/whatasame/persistencecontext): What is persistence
+- [Persistence context](spring-data-jpa/src/test/java/com/whatasame/persistencecontext): What is persistence
   context and how does it work in different type of.
-- [Identifier](spring-data-jpa/src/test/java/com/github/whatasame/identifier): Kinds of identifier in JPA and
+- [Identifier](spring-data-jpa/src/test/java/com/whatasame/identifier): Kinds of identifier in JPA and
   implementation in Hibernate.
 
 ### Spring library
 
-- [Testcontainers](spring-library/src/test/java/com/github/whatasame/testconatiners): How to
+- [Testcontainers](spring-library/src/test/java/com/whatasame/testconatiners): How to
   use Testcontainers in Spring Boot with JUnit extension.
 
 ### Spring Security

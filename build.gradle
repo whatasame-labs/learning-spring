@@ -8,7 +8,7 @@ plugins {
 bootJar.enabled = false
 
 subprojects {
-    group = 'com.github.whatasame'
+    group = 'com.whatasame'
     version = '1.0.0'
     sourceCompatibility = '21'
 
